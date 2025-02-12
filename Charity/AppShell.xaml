@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <Shell
+        x:Class="Charity.AppShell"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:local="clr-namespace:Charity"
+        xmlns:views="clr-namespace:Charity.Views"
+        Shell.FlyoutBehavior="Flyout"
+        Title="Charity">
+    
+    
+        <!-- Flyout Items -->
+        <FlyoutItem Title="Home">
+            <ShellContent
+         Title="Home"
+         ContentTemplate="{DataTemplate local:MainPage}"
+         Route="MainPage" />
+        </FlyoutItem>
+
+        <!-- Categories Section in Sidebar -->
+        <FlyoutItem Title="التصنيف">
+            <ShellContent
+         Title="Categories"
+         ContentTemplate="{DataTemplate views:CategoryView}"
+         Route="CategoryView"/>
+        </FlyoutItem>
+
+        <!-- Cases Section in Sidebar -->
+        <FlyoutItem Title="الحـالات">
+            <ShellContent
+         Title="Cases"
+         ContentTemplate="{DataTemplate views:CaseView}"
+         Route="CasesView"/>
+        </FlyoutItem> 
+    
+        <!-- Login Section in Sidebar -->
+        <FlyoutItem Title="الدخـول">
+            <ShellContent
+         Title="Login"
+         ContentTemplate="{DataTemplate views:LoginView}"
+         Route="LoginView"/>
+        </FlyoutItem> 
+        <!-- Login Section in Sidebar -->
+        <FlyoutItem Title="التسجيل">
+            <ShellContent
+         Title="Signup"
+         ContentTemplate="{DataTemplate views:SignupView}"
+         Route="SignupView"/>
+        </FlyoutItem>
+
+    </Shell>

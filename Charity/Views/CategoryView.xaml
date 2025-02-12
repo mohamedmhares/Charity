@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:modelview="clr-namespace:Charity.ViewModels"
+             x:Class="Charity.Views.CategoryView"
+             Title="CategoryView">
+    
+    <VerticalStackLayout Padding="15" Spacing="10">
+        <!--<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />-->
+
+        <Label Text="إضافة تصنيف" HorizontalOptions="Start" FontSize="Medium" />
+
+        <!-- List of Categories -->
+        <ListView ItemsSource="{Binding Categories}" x:Name="CategoryList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- Category Add Form -->
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="إسم التصنيف" HorizontalOptions="Start" FontSize="Small" />
+                <Entry Placeholder="ادخل إسم التصنيف" Text="{Binding CategoryName}" FontSize="Small" />
+
+                <Label Text="الوصف" HorizontalOptions="Start" FontSize="Small" />
+                <Editor Placeholder="من فضلك ادخل الوصف" Text="{Binding CategoryDescription}" HeightRequest="150" FontSize="Small" />
+
+                <Button Text="إضافة تصنيف" Command="{Binding AddCategoryCommand}" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

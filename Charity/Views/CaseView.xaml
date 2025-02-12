@@ -1,0 +1,50 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:modelview="clr-namespace:Charity.ViewModels"
+             xmlns:card="clr-namespace:Charity.CustomControl"
+             x:Class="Charity.Views.CaseView"
+             Title="CaseView">
+    <VerticalStackLayout Padding="15" Spacing="10">
+        <Label Text="تسجيل الحالات" HorizontalOptions="Start" FontSize="Medium" />
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="إسم الحالة" HorizontalOptions="Start" FontSize="Small" />
+                <Entry Placeholder="ادخل إسم الحالة" Text="{Binding CaseName}" FontSize="Small" />
+
+                <Label Text="عدد الأفراد" HorizontalOptions="Start" FontSize="Small" />
+                <Entry Placeholder="ادخل عدد الأفراد" Text="{Binding CaseNumber}" FontSize="Small" />
+
+                <Label Text="اختر التصنيف" HorizontalOptions="Start" FontSize="Small" />
+                <Picker ItemsSource="{Binding Categories}" 
+                        SelectedItem="{Binding SelectedCategory}" 
+                        ItemDisplayBinding="{Binding Name}" 
+                        FontSize="Small" />
+                <HorizontalStackLayout Padding="15" Spacing="15">
+                    <Label Text="وجود الأب" HorizontalOptions="Start" FontSize="Small" />
+                    <CheckBox IsChecked="{Binding IsFatherAlive}" />
+                    <Label Text="وجود الأم" HorizontalOptions="Start" FontSize="Small" />
+                    <CheckBox IsChecked="{Binding IsMotherAlive}" />
+                </HorizontalStackLayout>
+                <Label Text="الوصف" HorizontalOptions="Start" FontSize="Small" />
+                <Editor Placeholder="من فضلك ادخل الوصف" Text="{Binding CaseDescription}" HeightRequest="150" FontSize="Small" />
+
+                <Button Text="إضافة" Command="{Binding AddCaseCommand}" />
+            </VerticalStackLayout>
+        </Frame>
+        <ScrollView>
+            <ListView ItemsSource="{Binding Cases}" x:Name="CaseList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <card:CaseCard 
+                        Title="{Binding Name}" 
+                        TextLable="{Binding CategoryName}" 
+                        ImageSource="user.png" 
+                               />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
